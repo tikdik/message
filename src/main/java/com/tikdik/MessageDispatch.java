@@ -21,6 +21,16 @@ public class MessageDispatch {
         }
     }
 
+    public void dispatch(String message) {
+        int split = message.indexOf(":");
+        if (split < 0) {
+            return;
+        }
+        String tag = message.substring(0, split);
+        String data = message.substring(split + 1);
+        dispatch(tag, data);
+    }
+
     public void dispatch(String tag, String data) {
         if (tag == null || data == null) {
             return;
