@@ -1,11 +1,11 @@
 package com.tikdik.message;
 
+import com.tikdik.annotation.MessageTag;
 import lombok.Data;
 
 @Data
-public class FirstMessage extends Message{
-
-    private String tag = "first";
+@MessageTag("first")
+public class FirstMessage {
 
     private String name;
 

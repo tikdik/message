@@ -9,14 +9,14 @@ import java.util.Map;
 import java.util.Set;
 
 public class MessageDispatch {
-    private static Map<String, Class> classMap;
+    private static Map<String, Class<?>> classMap;
 
     static {
         classMap = new HashMap<>();
         Reflections reflections = new Reflections(Handler.class.getPackage().getName());
         Set<Class<?>> classesList = reflections.getTypesAnnotatedWith(MessageTag.class);
-        for (Class classes : classesList) {
-            MessageTag messageTag = (MessageTag) classes.getAnnotation(MessageTag.class);
+        for (Class<?> classes : classesList) {
+            MessageTag messageTag = classes.getAnnotation(MessageTag.class);
             classMap.put(messageTag.value(), classes);
         }
     }
