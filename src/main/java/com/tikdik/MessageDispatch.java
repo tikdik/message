@@ -22,7 +22,14 @@ public class MessageDispatch {
     }
 
     public void dispatch(String tag, String data) {
+        if (tag == null || data == null) {
+            return;
+        }
         Class cls = classMap.get(tag);
+        if (cls == null) {
+            return;
+        }
+
         Handler handler = null;
         try {
             handler = (Handler) cls.newInstance();

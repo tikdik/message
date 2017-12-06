@@ -5,16 +5,16 @@ import lombok.Data;
 @Data
 public class SecondMessage extends Message{
 
+    private String tag = "second";
+
     private String title;
 
     private int number;
 
     public SecondMessage() {
-        setTag("second");
     }
 
     public SecondMessage(String title, int number) {
-        this();
         this.number = number;
         this.title = title;
     }
